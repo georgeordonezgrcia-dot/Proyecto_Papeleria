@@ -1,6 +1,9 @@
+
 # 📊 Proyecto de Business Intelligence | Papelería PyM
 
 ### 🐍 Python | 🗄️ SQL | 📊 Power BI | ⚙️ Automatización | 📈 Data Analytics
+
+---
 
 ## 📌 Descripción del proyecto
 
@@ -15,6 +18,8 @@ El proyecto está estructurado en tres componentes principales:
 3. **Power BI:** modelado de datos, desarrollo de medidas DAX y construcción de dashboards interactivos.
 
 Esta arquitectura permite representar un flujo de trabajo de datos, desde su origen hasta su presentación mediante reportes ejecutivos.
+
+> **Nota:** los datos utilizados en el proyecto son sintéticos, generados mediante Python con fines educativos y demostrativos.
 
 ---
 
@@ -35,7 +40,7 @@ Esta arquitectura permite representar un flujo de trabajo de datos, desde su ori
 ## 📂 Estructura del proyecto
 
 ```text
-Proyecto-Papeleria-PyM/
+Proyecto_Papeleria/
 │
 ├── pym_externo.py
 │   └── Funciones de generación, ingesta y consulta
@@ -43,17 +48,18 @@ Proyecto-Papeleria-PyM/
 ├── analisis.ipynb
 │   └── Consultas SQL y análisis de negocio
 │
-├── VentasPrueba.db
-│   └── Base de datos SQLite3
-│
 ├── Ventas Papelería PyM.pbix
-│   └── Dashboard interactivo desarrollado en Power BI
+│   └── Dashboard desarrollado en Power BI
+│
+├── imagenes/
+│   ├── dashboard_principal.png
+│   └── analisis_detallado.png
 │
 └── README.md
     └── Documentación general del proyecto
 ```
 
-*Nota: la estructura representa los archivos que componen la solución. Su disponibilidad en GitHub dependerá de cuáles se incorporen al repositorio.*
+La solución utiliza una base de datos SQLite3 denominada `VentasPrueba.db`, cuyo archivo puede mantenerse fuera del repositorio y cuya ubicación debe configurarse en el entorno de ejecución.
 
 ---
 
@@ -63,7 +69,7 @@ Módulo desarrollado en Python que concentra las funciones necesarias para gesti
 
 Su objetivo es automatizar la generación y almacenamiento de registros de ventas, reduciendo la intervención manual y facilitando la disponibilidad de información para los procesos analíticos.
 
-### Principales funcionalidades
+### 🔧 Principales funcionalidades
 
 - Generación de registros de ventas simulados.
 - Construcción y manipulación de estructuras de datos mediante Pandas.
@@ -71,6 +77,7 @@ Su objetivo es automatizar la generación y almacenamiento de registros de venta
 - Ingesta y almacenamiento de datos en SQLite3.
 - Automatización de procesos de carga de información.
 - Ejecución de consultas SQL desde Python.
+- Administración de catálogos de productos y precios.
 - Organización y documentación de funciones para facilitar su mantenimiento.
 
 **Propósito:** construir un proceso de datos organizado y reutilizable que permita simular las operaciones comerciales de una empresa y alimentar una base de datos histórica.
@@ -83,9 +90,9 @@ Su objetivo es automatizar la generación y almacenamiento de registros de venta
 
 Notebook desarrollado para explorar y analizar la información comercial almacenada en la base de datos SQLite3.
 
-Este componente se enfoca en transformar consultas SQL en respuestas a preguntas relevantes del negocio, aplicando técnicas de análisis de datos y lógica de negocio.
+Este componente se enfoca en transformar consultas SQL en respuestas a preguntas relevantes del negocio, aplicando técnicas de análisis de datos y lógica comercial.
 
-### Actividades principales
+### 🔍 Actividades principales
 
 - Exploración de tablas y estructuras de información.
 - Aplicación de filtros y condiciones mediante SQL.
@@ -97,7 +104,7 @@ Este componente se enfoca en transformar consultas SQL en respuestas a preguntas
 - Desarrollo de indicadores comerciales mediante consultas SQL.
 - Interpretación de resultados para identificar oportunidades de mejora.
 
-### Preguntas de negocio
+### 💡 Preguntas de negocio
 
 - ¿Qué sucursales generan mayores ingresos?
 - ¿Cómo evolucionan las ventas durante un periodo determinado?
@@ -119,7 +126,10 @@ Desarrollo de un dashboard interactivo en Power BI utilizando los datos históri
 
 El objetivo es integrar procesos de transformación, modelado y visualización de datos para construir una herramienta que permita monitorear el desempeño comercial y facilitar la toma de decisiones.
 
-El tablero incorpora indicadores clave de rendimiento, análisis temporal, comparativos entre sucursales y herramientas interactivas para explorar información.
+El reporte está organizado en dos páginas:
+
+1. **Resumen Ejecutivo:** visión general de las ventas y el desempeño de las sucursales.
+2. **Análisis Detallado:** concentración de ventas, clasificación ABC y rentabilidad por producto.
 
 ### 🔧 Preparación y modelado de datos
 
@@ -131,88 +141,121 @@ El tablero incorpora indicadores clave de rendimiento, análisis temporal, compa
 - Desarrollo de medidas DAX para calcular indicadores comerciales.
 - Aplicación de filtros y segmentadores para facilitar la exploración de información.
 
-### 📈 Dashboard principal | Resumen ejecutivo
+---
 
-Página enfocada en proporcionar una visión general del desempeño comercial de la papelería.
+## 📸 4. Visualización del Dashboard | Power BI
 
-**Indicadores principales:**
+### 📊 4.1 Resumen Ejecutivo | Desempeño General del Negocio
 
-- **Ventas totales:** ingresos generados durante el periodo seleccionado.
-- **Número de tickets:** cantidad de operaciones comerciales registradas.
-- **Ticket promedio:** ingreso promedio por transacción.
-- **Crecimiento de ventas:** variación porcentual respecto al periodo anterior.
+![Dashboard Principal](imagenes/dashboard_principal.png)
 
-**Análisis visuales:**
+Esta página proporciona una visión general del desempeño comercial de la papelería mediante indicadores clave de rendimiento y visualizaciones interactivas.
 
-- Evolución de las ventas en el tiempo.
-- Comparativo de ingresos por sucursal.
-- Ranking de productos más vendidos.
-- Participación de las sucursales en las ventas.
-- Filtros por fecha y sucursal.
+#### Indicadores principales
 
-Esta página permite identificar rápidamente el comportamiento general de las ventas y detectar variaciones en el rendimiento comercial.
+| Indicador | Descripción |
+|---|---|
+| Ventas totales | Ingresos generados durante el periodo seleccionado |
+| Variación de ventas | Comparación porcentual contra un periodo equivalente anterior |
+| Total de operaciones | Número de transacciones comerciales registradas |
+| Ticket promedio | Ingreso promedio generado por operación |
+| Variación del ticket promedio | Cambio porcentual respecto al periodo de comparación |
+| Sucursales activas | Cantidad de establecimientos con actividad comercial |
+| Piezas vendidas | Volumen total de unidades comercializadas |
 
-### 📉 Dashboard secundario | Análisis detallado
+#### Análisis visuales
 
-Página enfocada en profundizar en el comportamiento de las ventas, los productos y el desempeño de las sucursales.
+- **Evolución diaria de ventas:** identificación de tendencias y variaciones en los ingresos.
+- **Posición de sucursales por ventas:** comparación del desempeño comercial entre establecimientos.
+- **Desempeño por producto:** evaluación de ingresos, participación, operaciones y unidades vendidas.
+- **Desempeño por sucursal:** análisis del ticket promedio, cumplimiento de metas y margen bruto.
 
-**Análisis desarrollados:**
+#### Segmentadores interactivos
 
-**1. Análisis ABC de productos**
+El dashboard permite explorar la información mediante filtros de:
 
-Clasificación de productos de acuerdo con su contribución a los ingresos, utilizando porcentajes acumulados y medidas DAX.
+- Producto.
+- Alcaldía.
+- Zona comercial.
+- Año y mes.
 
-- Categoría A: productos que representan aproximadamente el primer 80 % de las ventas acumuladas.
-- Categoría B: productos que representan el siguiente 15 %.
-- Categoría C: productos que representan el porcentaje restante.
-
-Este análisis permite identificar los productos de mayor importancia comercial.
-
-**2. Análisis de rentabilidad**
-
-Evaluación de los resultados económicos mediante indicadores como:
-
-- Ingresos totales.
-- Costos asociados a las ventas.
-- Utilidad bruta.
-- Margen de utilidad.
-
-**3. Análisis temporal**
-
-Evaluación del comportamiento de las ventas mediante:
-
-- Comparativos mensuales.
-- Crecimiento respecto al mes anterior.
-- Identificación de tendencias.
-- Análisis de variaciones comerciales.
-
-**4. Desempeño por sucursal**
-
-Comparación de resultados comerciales para identificar sucursales con mayor participación en las ventas y evaluar su desempeño.
-
-### 🧮 Desarrollo de medidas DAX
-
-Implementación de medidas para construir indicadores dinámicos que respondan a los filtros aplicados en el dashboard.
-
-Entre los cálculos abordados se encuentran:
-
-- Ingresos totales.
-- Número de operaciones.
-- Ticket promedio.
-- Crecimiento porcentual.
-- Ranking de productos.
-- Porcentaje de participación.
-- Porcentaje acumulado de ventas.
-- Clasificación ABC.
-- Utilidad bruta.
-
-**Propósito:** transformar la información histórica en una herramienta visual e interactiva que facilite la interpretación de resultados, el seguimiento de indicadores y la identificación de oportunidades comerciales.
-
-**Habilidades desarrolladas:** Power BI, Power Query, DAX, modelado dimensional, Data Visualization, KPI Design y Business Intelligence.
+**Objetivo:** proporcionar a la dirección una herramienta de monitoreo comercial que permita identificar cambios en las ventas, comparar sucursales y evaluar el comportamiento de los principales indicadores.
 
 ---
 
-## 🛠️ Tecnologías y herramientas
+### 📈 4.2 Análisis Detallado | Productos y Rentabilidad
+
+![Análisis Detallado](imagenes/analisis_detallado.png)
+
+Esta página se enfoca en estudiar la concentración de ingresos y el desempeño económico de los productos, utilizando herramientas de análisis como Pareto, clasificación ABC y métricas de rentabilidad.
+
+#### Análisis desarrollados
+
+**1. Análisis de Pareto 80/20 por producto**
+
+Visualización que combina las ventas individuales por producto con su porcentaje acumulado de participación.
+
+Permite identificar cuáles concentran una mayor proporción de los ingresos comerciales.
+
+**2. Clasificación ABC de productos**
+
+Segmentación de productos de acuerdo con su participación acumulada en las ventas:
+
+- **Categoría A:** productos que representan aproximadamente el primer 80 % de los ingresos acumulados.
+- **Categoría B:** productos que representan el siguiente 15 %.
+- **Categoría C:** productos que representan el porcentaje restante.
+
+**3. Top 10 productos por utilidad bruta**
+
+Ranking de los productos que generan mayor utilidad bruta, facilitando la identificación de aquellos que aportan más valor económico al negocio.
+
+**4. Detalle ABC de productos**
+
+Tabla analítica que integra:
+
+- Total de ventas.
+- Posición o ranking comercial.
+- Ventas acumuladas.
+- Porcentaje acumulado.
+- Clasificación ABC.
+- Utilidad bruta.
+- Margen bruto porcentual.
+
+**5. Distribución ABC**
+
+Gráfico que presenta la cantidad de productos pertenecientes a cada categoría ABC.
+
+**Objetivo:** identificar productos estratégicos, evaluar la concentración de ingresos y analizar oportunidades de mejora en la rentabilidad comercial.
+
+---
+
+## 🧮 5. Desarrollo de medidas DAX
+
+Implementación de medidas para construir indicadores dinámicos que respondan a los filtros aplicados en Power BI.
+
+### Principales indicadores
+
+| Indicador | Aplicación |
+|---|---|
+| Ingresos totales | Medición del valor total de ventas |
+| Total de operaciones | Conteo de transacciones comerciales |
+| Ticket promedio | Valor promedio de las operaciones |
+| Piezas vendidas | Cantidad de unidades comercializadas |
+| Variación de ventas | Comparación del desempeño entre periodos |
+| Ranking de productos | Ordenamiento según ingresos generados |
+| Participación porcentual | Contribución de productos y sucursales |
+| Ventas acumuladas | Cálculo progresivo de ingresos |
+| Porcentaje acumulado | Base para el análisis de Pareto |
+| Clasificación ABC | Segmentación según contribución comercial |
+| Utilidad bruta | Diferencia entre ingresos y costos |
+| Margen bruto | Porcentaje de rentabilidad sobre ingresos |
+| Cumplimiento de metas | Comparación entre ventas y objetivos comerciales |
+
+El desarrollo de estas medidas permite aplicar lógica de negocio dentro del modelo semántico y obtener resultados dinámicos según el contexto de filtros.
+
+---
+
+## 🛠️ 6. Tecnologías y herramientas
 
 | Tecnología | Aplicación |
 |---|---|
@@ -228,68 +271,83 @@ Entre los cálculos abordados se encuentran:
 
 ---
 
-## 🔄 Arquitectura y flujo general de datos
+## 🔄 7. Arquitectura y flujo general de datos
 
-**1. Generación de datos — Python**
+El proyecto integra diferentes etapas del ciclo de vida de la información:
 
-Simulación de operaciones comerciales y generación de registros de ventas.
+```text
+         GENERACIÓN DE DATOS
+                Python
+                  │
+                  ▼
+       PROCESAMIENTO E INGESTA
+             Python + Pandas
+                  │
+                  ▼
+        ALMACENAMIENTO DE DATOS
+                SQLite3
+                  │
+          ┌───────┴────────┐
+          │                │
+          ▼                ▼
+      ANÁLISIS SQL    TRANSFORMACIÓN
+      analisis.ipynb    Power Query
+                           │
+                           ▼
+                     MODELO DE DATOS
+                        Power BI
+                           │
+                           ▼
+                      MEDIDAS DAX
+                           │
+                           ▼
+                    DASHBOARD POWER BI
+                           │
+               ┌───────────┴───────────┐
+               │                       │
+               ▼                       ▼
+         RESUMEN EJECUTIVO       ANÁLISIS DETALLADO
+               │                       │
+               └───────────┬───────────┘
+                           ▼
+                   TOMA DE DECISIONES
+```
 
-⬇️
-
-**2. Procesamiento e ingesta — Python + Pandas**
-
-Preparación de información y automatización de la carga de datos.
-
-⬇️
-
-**3. Almacenamiento — SQLite3**
-
-Persistencia de información histórica en una base de datos relacional.
-
-⬇️
-
-**4. Análisis exploratorio — SQL**
-
-Consultas, agrupaciones, cálculos e identificación de patrones comerciales.
-
-⬇️
-
-**5. Transformación y modelado — Power Query + Power BI**
-
-Preparación de tablas, construcción de relaciones y desarrollo del modelo de datos.
-
-⬇️
-
-**6. Indicadores y análisis — DAX**
-
-Creación de medidas para evaluar el desempeño comercial.
-
-⬇️
-
-**7. Visualización — Power BI**
-
-Construcción de dashboards interactivos para monitorear resultados y apoyar decisiones.
+Este flujo representa la integración de Python, SQL y Power BI como herramientas complementarias para la gestión y el análisis de información comercial.
 
 ---
 
-## 📈 Valor del proyecto
+## 📈 8. Valor del proyecto
 
 Este proyecto representa una solución práctica de Business Intelligence que integra diferentes etapas del ciclo de vida de los datos.
 
-Su principal aportación consiste en demostrar cómo una organización puede aprovechar información operativa para construir herramientas analíticas que faciliten el seguimiento de sus resultados comerciales.
+Su principal aportación consiste en demostrar cómo una organización puede aprovechar información operativa para construir herramientas analíticas que faciliten el seguimiento de resultados comerciales.
 
-Desde una perspectiva técnica, el proyecto permite aplicar conocimientos de automatización, administración de bases de datos, SQL, modelado dimensional, DAX y visualización de información.
+### Desde una perspectiva técnica
 
-Desde una perspectiva de negocio, permite:
+Permite aplicar conocimientos de:
+
+- Automatización y procesamiento de datos.
+- Administración de bases de datos relacionales.
+- Consultas SQL orientadas al análisis.
+- Transformación y preparación de información.
+- Modelado de datos.
+- Desarrollo de medidas DAX.
+- Visualización y comunicación de resultados.
+
+### Desde una perspectiva de negocio
+
+Permite:
 
 - Monitorear el comportamiento de las ventas.
 - Identificar productos con mayor contribución a los ingresos.
 - Comparar el desempeño entre sucursales.
 - Analizar tendencias y variaciones comerciales.
 - Evaluar indicadores de rentabilidad.
+- Identificar oportunidades de mejora.
 - Facilitar la interpretación de información para la toma de decisiones.
 
-El enfoque combina habilidades de **Data Analytics, Business Intelligence y fundamentos de Data Engineering**, aplicadas a un caso práctico que representa procesos comunes dentro de un entorno empresarial.
+El enfoque combina habilidades de **Data Analytics, Business Intelligence y fundamentos de Data Engineering**, aplicadas a un caso práctico que representa procesos habituales dentro de un entorno empresarial.
 
 ---
 
