@@ -2,6 +2,60 @@ class pym_externo:
 
   ruta_drive = "/content/drive/MyDrive/Curso SQL 202607/VentasPrueba.db"
 
+  catalogo_precios_ajuste = {
+    "Cuaderno profesional": 85.00,
+    "Cuaderno doble raya": 65.00,
+    "Lápiz del número 2": 8.00,
+    "Pluma azul": 10.00,
+    "Pluma negra": 10.00,
+    "Pluma roja": 10.00,
+    "Marcador permanente": 28.00,
+    "Marcador para pizarrón": 35.00,
+    "Resaltador amarillo": 22.00,
+    "Resaltador verde": 22.00,
+    "Resaltador rosa": 22.00,
+    "Goma de borrar": 12.00,
+    "Sacapuntas": 15.00,
+    "Tijeras escolares": 35.00,
+    "Tijeras de oficina": 75.00,
+    "Regla de 30 cm": 18.00,
+    "Compás metálico": 55.00,
+    "Juego de geometría": 65.00,
+    "Pegamento en barra": 25.00,
+    "Pegamento líquido": 30.00,
+    "Cinta adhesiva": 22.00,
+    "Corrector líquido": 25.00,
+    "Corrector en cinta": 38.00,
+    "Carpeta tamaño carta": 45.00,
+    "Carpeta tamaño oficio": 55.00,
+    "Separadores de plástico": 40.00,
+    "Hojas blancas tamaño carta": 120.00,
+    "Hojas recicladas": 95.00,
+    "Hojas cuadriculadas": 55.00,
+    "Post-it": 45.00,
+    "Bloc de notas": 35.00,
+    "Engrapadora": 85.00,
+    "Caja de grapas": 28.00,
+    "Clips metálicos": 25.00,
+    "Broches tipo baco": 30.00,
+    "Folder manila": 8.00,
+    "Folder plástico con broche": 25.00,
+    "Archivador": 95.00,
+    "Tóner para impresora": 850.00,
+    "Cartuchos de tinta": 550.00,
+    "Calculadora científica": 450.00,
+    "Calculadora básica": 120.00,
+    "Memoria USB": 180.00,
+    "Mouse inalámbrico": 250.00,
+    "Teclado": 350.00,
+    "Agenda anual": 150.00,
+    "Calendario de escritorio": 75.00,
+    "Papel fotográfico": 180.00,
+    "Papel bond": 140.00,
+    "Cinta doble cara": 45.00,
+    "Pega diamantina": 35.00
+  }
+
   def generar_df_info_mejorada(
       fechaVenta,
       root_base_datos = ruta_drive,
@@ -62,7 +116,11 @@ class pym_externo:
     for i in range(1, r.randint(1000, 35001)):
       cajero = r.choice(listaInsumosCajeros)
       producto = r.choice(listaInsumosProductos)
-      precio = round(r.randint(10, 20000) * r.random(), 2)
+      
+      # Precio obtenido del catálogo
+      precio = pym_externo.catalogo_precios_ajuste[producto]
+      # precio = round(r.randint(10, 20000) * r.random(), 2)
+      
       cantidad = r.randint(1, 100)
       total = round(precio * cantidad, 2)
       sucursal = r.choice(listaInsumosSucursales)
@@ -126,6 +184,7 @@ class pym_externo:
     import pandas as pd
     import random as r
     import sqlite3 as sql
+    import datetime as dt
 
     def rangoFecha(fechaInicial, fechaFinal):
       rangoObjetosFecha = pd.date_range(start=fechaInicial, end=fechaFinal, freq="1d")
@@ -138,7 +197,7 @@ class pym_externo:
     rango_fechas = rangoFecha(fechaInicial, fechaFinal)
 
     for fechaVenta in rango_fechas:
-      generar_df_info_mejorada(fechaVenta)
+      pym_externo.generar_df_info_mejorada(fechaVenta) # Se agrego "pym_externo."
 
     if verbose:
       print(f"Se generó con éxito las ventas del {fechaInicial} al {fechaFinal}")
